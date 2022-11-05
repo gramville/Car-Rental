@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CarRental.Models.customer>
+
+@{
+    ViewData["Title"] = "ListOfCustomers";
+}
+
+<h1>ListOfCustomers</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Middle Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Password
+            </th>
+            <th>
+                Deleted
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+               @item.FirstName
+            </td>
+            <td>
+               @item.MiddleName
+            </td>
+            <td>
+               @item.LastName
+            </td>
+            <td>
+               @item.Phone
+            </td>
+            <td>
+               @item.Email
+            </td>
+            <td>
+               @item.Password
+            </td>
+            <td>
+               @item.Deleted
+            </td>
+            <td>
+                <a asp-action="UpdateUser" asp-route-id="@item.Id">Edit</a> 
+                <a asp-action="DeleteUser" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

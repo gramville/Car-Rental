@@ -1,0 +1,91 @@
+﻿@model CarRental.Models.car
+
+@{
+    ViewData["Title"] = "Rent";
+}
+
+<h1>Rent</h1>
+
+<div>
+    <h4>car</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Model.ModelNumber
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ModelNumber
+        </dd>
+        <dt class="col-sm-2">
+            @Model.ManufactureDate
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ManufactureDate
+        </dd>
+        <dt class="col-sm-2">
+            @Model.Available
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Available
+        </dd>
+        <dt class="col-sm-2">
+            @Model.PlateNumber
+        </dt>
+        <dd class="col-sm-10">
+            @Model.PlateNumber
+        </dd>
+    </dl>
+    <script>
+        var today = new Date().toISOString().split('T')[0];
+        var dates = document.querySelectorAll("date");
+        dates[0].setAttribute('min', today);
+        dates[1].setAttribute('min', today);
+    </script>
+    <form asp-action="RegisterRent" asp-controller="RentController1" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+
+        </div>
+        <div class="form-group">
+            <label class="control-label">Start Date</label>
+            <input type="date" class="form-control" />
+
+        </div>
+        <div class="form-group">
+            <label class="control-label">End Date</label>
+            <input type="date" class="form-control" />
+
+        </div>
+        <div class="form-group">
+            <label class="control-label">Fare</label>
+            <input value="500" class="form-control" readonly />
+
+        </div>
+        <div class="form-group">
+            <label class="control-label">Total Amount</label>
+            <input class="form-control" readonly value="1500" />
+        </div>
+        <div class="form-group form-check">
+            <label class="form-check-label">Returned</label>
+            <input class="form-check-input" value="0" readonly />
+
+        </div>
+        <div class="form-group">
+            <label  class="control-label">Customer Id</label>
+            <input  readonly value="1" />
+        </div>
+        <div class="form-group">
+            <label  class="control-label">Car Id</label>
+            <input  readonly value="@Model.Id" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+
+    
+
+    <div>
+    <a asp-action="Index">Back to List</a>
+</div>
+</div>

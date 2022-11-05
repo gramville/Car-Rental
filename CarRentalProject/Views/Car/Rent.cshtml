@@ -1,0 +1,96 @@
+﻿@model CarRental.Models.car
+
+@{
+    ViewData["Title"] = "Rent";
+}
+
+<h1>Rent</h1>
+
+<h4>car</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <!--<input type="hidden" asp-for="Id" />-->
+        <div class="form-group">
+            <label asp-for="ModelNumber" class="control-label"></label>
+            <input asp-for="ModelNumber" class="form-control" />
+            <span asp-validation-for="ModelNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ManufactureDate" class="control-label"></label>
+            <input asp-for="ManufactureDate" class="form-control" readonly />
+            <span asp-validation-for="ManufactureDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Available" class="control-label"></label>
+            <input asp-for="Available" class="form-control" />
+            <span asp-validation-for="Available" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PlateNumber" class="control-label"></label>
+            <input asp-for="PlateNumber" class="form-control" />
+            <span asp-validation-for="PlateNumber" class="text-danger"></span>
+        </div>
+
+
+
+        <form asp-action="RegisterRent" asp-controller="RentController1" method="post">
+            <div class="form-group">
+                <label class="control-label">Start Date</label>
+                <input type="date" class="form-control" id="SDate" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">End Date</label>
+                <input type="date" class="form-control" id="EDate" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Fare</label>
+                <input class="form-control" readonly value="500" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Total Amount</label>
+                <input class="form-control" readonly id="TAmount" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Returned</label>
+                <input class="form-control" readonly value="0" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Customer Id</label>
+                <input class="form-control" readonly value="1" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label">CarId</label>
+                <-<input asp-for="Id" class="form-control" readonly  />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Rent" class="btn btn-primary" />
+                <a asp-action="CarsToDisplayForCustomers" class="btn-danger">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    var sDate = document.querySelector("#SDate");
+    var eDate = document.querySelector("#EDate");
+    eDate.diabled = true;
+    sDate.onchange= function(){
+        eDate.disabled = fase;
+    }
+    eDate.onchange = function () {
+        var TAmount = document.querySelector("#TAmount");
+        const diffTime = Math.abs(eDate - sDate);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        TAmount.Value = diffDays * 500;
+    }
+</script>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

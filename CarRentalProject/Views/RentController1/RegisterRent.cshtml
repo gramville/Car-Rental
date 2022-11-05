@@ -1,0 +1,102 @@
+﻿@model CarRental.Models.rent
+
+@{
+    ViewData["Title"] = "RegisterRent";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script language="javascript">
+    var dd = String(endDate.getDate()).padStart(2, '0');
+    var mm = String(endDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = endDate.getFullYear();
+    endDate = dd + '/' + mm + '/' + yyyy;
+    var minDate = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("SDate").min = minDate;
+    
+</script>
+
+<h1>RegisterRent</h1>
+
+<h4>rent</h4>
+<hr />
+<div class="form-group">
+    <label asp-for="ModelNumber" class="control-label"></label>
+    <input asp-for="ModelNumber" class="form-control" readonly/>
+</div>
+<div class="form-group">
+    <label asp-for="ManufactureDate" class="control-label"></label>
+    <input asp-for="ManufactureDate" class="form-control" readonly/>
+</div>
+<div class="form-group">
+    <label asp-for="PlateNumber" class="control-label"></label>
+    <input asp-for="PlateNumber" class="form-control" readonly/>
+</div>
+<div>
+    <label>Front Picture</label>
+    <img src="@Model.FPicture"/>
+</div>
+<div>
+    <label>Right Picture</label>
+    <img src="@Model.RPicture" />
+</div>
+<div>
+    <label>Left Picture</label>
+    <img src="@Model.LPicture" />
+</div>
+<div>
+    <label>Back Picture</label>
+    <img src="@Model.BPicture" />
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RegisterRent" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate"  class="form-control" id="SDate" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" type="date" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fare" class="control-label"></label>
+                <input asp-for="Fare" class="form-control" readonly id="EDate" />
+                <span asp-validation-for="Fare" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalAmount" class="control-label"></label>
+                <input asp-for="TotalAmount" class="form-control" readonly />
+                <span asp-validation-for="TotalAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Returned" />
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label"></label>
+                <input asp-for="CustomerId" readonly value="1" />
+            </div>
+            <div class="form-group">
+                <label asp-for="CarId" class="control-label"></label>
+                <input asp-for="CarId" readonly />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Rent" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

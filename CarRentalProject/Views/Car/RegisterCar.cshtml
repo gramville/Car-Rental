@@ -1,0 +1,72 @@
+﻿@model CarRental.Models.car
+
+@{
+    ViewData["Title"] = "RegisterCar";
+}
+
+<h1>RegisterCar</h1>
+
+<h4>car</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RegisterCar" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ModelNumber" class="control-label"></label>
+                <input asp-for="ModelNumber" class="form-control" />
+                <span asp-validation-for="ModelNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ManufactureDate" class="control-label"></label>
+                <input asp-for="ManufactureDate" class="form-control" />
+                <span asp-validation-for="ManufactureDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Available" class="control-label"></label>
+                <input asp-for="Available" value="1" readonly class="form-control" />
+                <span asp-validation-for="Available" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlateNumber" class="control-label"></label>
+                <input asp-for="PlateNumber" class="form-control" />
+                <span asp-validation-for="PlateNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeId" class="control-label"></label>
+                <input asp-for="EmployeeId" readonly value="1" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Picture" class="control-label"></label>
+                <input asp-for="Picture" readonly value="1" />
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RightPicture" class="control-label"></label>
+                <input asp-for="RightPicture" />
+                <span asp-validation-for="RightPicture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeftPicture" class="control-label"></label>
+                <input asp-for="LeftPicture" readonly value="1" />
+                <span asp-validation-for="LeftPicture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BackPicture" class="control-label"></label>
+                <input asp-for="BackPicture" readonly value="1" />
+                <span asp-validation-for="BackPicture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

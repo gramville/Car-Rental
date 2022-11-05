@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CarRental.Models.car>
+
+@{
+    ViewData["Title"] = "DeletedCars";
+}
+
+<h1>DeletedCars</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Model Number
+            </th>
+            <th>
+                Manufacture Date
+            </th>
+            <th>
+                picture
+            </th>
+            <th>
+                Available
+            </th>
+            <th>
+                PlateNumber
+            </th>
+            <th>
+                Deleted
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                item.ModelNumber
+            </td>
+            <td>
+                @item.ManufactureDate
+            </td>
+            <td>
+                @item.Fpicture
+            </td>
+            <td>
+                @item.Available
+            </td>
+            <td>
+                @item.PlateNumber
+            </td>
+            <td>
+                @item.Deleted
+            </td>
+            <td>
+                <a asp-action="RestoreCars" asp-route-id="@item.Id">Restore</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

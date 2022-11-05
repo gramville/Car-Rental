@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CarRental.Models.rent>
+
+@{
+    ViewData["Title"] = "ViewRentHistory";
+}
+
+<h1>ViewRentHistory</h1>
+
+<p>
+    <a asp-action="RegisterRent">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               StartDate
+            </th>
+            <th>
+               EndDate
+            </th>
+            <th>
+               Fare
+            </th>
+            <th>
+               TotalAmount
+            </th>
+            <th>
+               Returned
+            </th>
+            <th>
+               car
+            </th>
+            <th>
+               customer
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+              @item.StartDate
+            </td>
+            <td>
+              @item.EndDate
+            </td>
+            <td>
+              @item.Fare
+            </td>
+            <td>
+              @item.TotalAmount
+            </td>
+            <td>
+              @item.Returned
+            </td>
+            <td>
+              @item.CarId
+            </td>
+            <td>
+              @item.CustomerId
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

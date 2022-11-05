@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CarRental.Models.car>
+@using Microsoft.AspNetCore.Http;
+
+
+@{
+    ViewData["Title"] = "CarsToDisplayForCustomers";
+}
+
+<h1>Cars</h1>
+
+
+
+<p>
+
+    <a class="active" href="/Customer/UpdateUser/1">Your profile ||</a>
+    <a class="active" href="/RentController1/ViewRentHistory/1">Rent History</a>
+
+</p>
+
+@foreach (var item in Model)
+{
+    <div>
+        <img src="@item.Fpicture" />
+        <p>Model : @item.ModelNumber</p>
+        <p>Manufacture Date : @item.ManufactureDate</p>
+        <p>Plate Number : @item.PlateNumber</p>
+        <a href="/RentController1/RegisterRent/@item.Id" class="btn btn-primary">Rent</a>
+    </div>
+}

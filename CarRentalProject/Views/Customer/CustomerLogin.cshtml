@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Customer Login";
+}
+
+<h1>Login</h1>
+<p>please enter your credentials</p>
+<form asp-action="CustomerLogin" asp-controller="Customer" metho ="post">
+    <label>Id</label>
+    <input  required/>
+    <label>Password</label>
+    <input  required/>
+    <button type="submit">Login</button>
+    <p>Don't have an account? <a asp-action="RegisterUser">Register Here</a></p>
+</form>

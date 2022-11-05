@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Login Error";
+}
+
+<h1>Please enter the required information</h1>
+<pre style="color:red">
+        Login failed !!! Id and password does not match
+</pre>
+<form asp-action="CustomerLogin" asp-controller="Customer" method="post">
+    <label>Id</label>
+    <input  />
+    <label>Password</label>
+    <input type="password" />
+    <button type="submit">Login</button>
+    <p>Don't have an account? <a asp-action="RegisterUser">Register Here</a></p>
+</form>
