@@ -23,3 +23,7 @@ This project is a car rental website developed using ASP.NET and MSSQL. The webs
 - HTML/CSS
 
 ## Screenshots
+
+Here are some examples of what the website will look like:
+
+Homepage:
